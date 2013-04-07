@@ -8,21 +8,21 @@ public class LcdNumbersTest {
 
 	@Test
 	public void getRepresentationOf1() {
-		
+
+		// When
 		String number = LcdNumbers.ONE.getRepresentation();
-		
+
 		// Then
-		String expectedRepresentation = "   \n" + "  |\n" + "  |\n"; 
-		assertEquals(expectedRepresentation, number);
+		assertEquals(LcdNumberExpectedRepresentation.one, number);
 	}
-	
+
 	@Test
 	public void getRepresentationOf2() {
-		
+
+		// When
 		String number = LcdNumbers.TWO.getRepresentation();
-		
+
 		// Then
-		String expectedRepresentation = " _ \n" + " _|\n" + "|_ \n"; 
-		assertEquals(expectedRepresentation, number);
+		assertEquals(LcdNumberExpectedRepresentation.two, number);
 	}
 }

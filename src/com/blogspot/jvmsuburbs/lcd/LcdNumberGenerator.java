@@ -8,7 +8,7 @@ public class LcdNumberGenerator {
 	private static final Map<String, String> numbersRepresentation = new HashMap<String, String>();
 	
 	static {
-		 numbersRepresentation.put("1", "   \n" + "  |'n" + "  |\n");
+		 numbersRepresentation.put("1", "   \n" + "  |\n" + "  |\n");
 		 numbersRepresentation.put("2", " _ \n" + " _|\n" + "|_ \n");
 		 numbersRepresentation.put("8", getRepresentationFor8());
 	}
