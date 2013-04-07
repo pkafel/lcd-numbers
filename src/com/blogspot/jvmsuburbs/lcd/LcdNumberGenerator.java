@@ -1,19 +1,19 @@
 package com.blogspot.jvmsuburbs.lcd;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LcdNumberGenerator {
 
-	private static final String one = "   \n" + "  |'n" + "  |";
-	private static final String two = " _ \n" + " _|\n" + "|_ "; 
+	private static final Map<String, String> numbersRepresentation = new HashMap<String, String>();
+	
+	static {
+		 numbersRepresentation.put("1", "   \n" + "  |'n" + "  |");
+		 numbersRepresentation.put("2", " _ \n" + " _|\n" + "|_ ");
+	}
 	
 	public static String generateRepresentationFor(String numberToRepresent) {
 
-		if (numberToRepresent.equals("1")) {
-			
-			return one;
-			
-		} else {
-			
-			return two;
-		}
+		return numbersRepresentation.get(numberToRepresent);
 	}
 }
