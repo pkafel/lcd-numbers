@@ -22,6 +22,12 @@ public enum LcdNumbers {
 			template[2][2] = " ";
 			return transformTemplateIntoString(template);
 		}
+	}, EIGHT {
+		@Override
+		public String getRepresentation() {
+			String[][] template = getTemplate();
+			return transformTemplateIntoString(template);
+		}
 	};
 
 	public abstract String getRepresentation();

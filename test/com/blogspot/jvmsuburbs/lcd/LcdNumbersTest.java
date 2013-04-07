@@ -25,4 +25,14 @@ public class LcdNumbersTest {
 		// Then
 		assertEquals(LcdNumberExpectedRepresentation.two, number);
 	}
+	
+	@Test
+	public void getRepresentationOf8() {
+
+		// When
+		String number = LcdNumbers.EIGHT.getRepresentation();
+
+		// Then
+		assertEquals(LcdNumberExpectedRepresentation.eight, number);
+	}
 }
