@@ -4,7 +4,7 @@ public enum LcdNumbers {
 	ONE;
 
 	public String getRepresentation() {
-		return null;
+		return "   \n" + "  |'n" + "  |\n";
 	}
 
 }
