@@ -49,4 +49,20 @@ public class LcdNumbersGeneratorTest {
 			Assert.assertTrue(exception instanceof IllegalArgumentException);
 		}
 	}
+	
+	@Test
+	public void shouldReturnRepresentationForComplexNumbers() {
+		
+		// Given
+		String inputNumber = "128";
+		
+		// When
+		String numberRepresentation = LcdNumberGenerator.generateRepresentationFor(inputNumber);
+		
+		// Then
+		String correctRepresentation = "   " + " _ " + " _ \n" +
+									   "  |" + " _|" + "|_|\n" +
+									   "  |" + "|_ " + "|_|\n";
+		Assert.assertEquals(correctRepresentation, numberRepresentation);
+	}
 }
