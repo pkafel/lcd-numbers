@@ -31,4 +31,17 @@ public class LcdNumbersGeneratorTest {
 		String expectedRepresentation = " _ \n" + " _|\n" + "|_ "; 
 		assertEquals(expectedRepresentation, number);
 	}
+	
+	@Test
+	public void shouldReturnRepresentationOf8() {
+		
+		// Given
+		
+		// When
+		String number = LcdNumberGenerator.generateRepresentationFor("8");
+		
+		// Then
+		String expectedRepresentation = " _ \n" + "|_|\n" + "|_|"; 
+		assertEquals(expectedRepresentation, number);
+	}
 }
