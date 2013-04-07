@@ -12,7 +12,7 @@ public class LcdNumbersTest {
 		String number = LcdNumbers.ONE.getRepresentation();
 		
 		// Then
-		String expectedRepresentation = "   \n" + "  |'n" + "  |\n"; 
+		String expectedRepresentation = "   \n" + "  |\n" + "  |\n"; 
 		assertEquals(expectedRepresentation, number);
 	}
 }
