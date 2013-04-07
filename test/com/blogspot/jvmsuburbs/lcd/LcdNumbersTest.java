@@ -15,4 +15,14 @@ public class LcdNumbersTest {
 		String expectedRepresentation = "   \n" + "  |\n" + "  |\n"; 
 		assertEquals(expectedRepresentation, number);
 	}
+	
+	@Test
+	public void getRepresentationOf2() {
+		
+		String number = LcdNumbers.TWO.getRepresentation();
+		
+		// Then
+		String expectedRepresentation = " _ \n" + " _|\n" + "|_ \n"; 
+		assertEquals(expectedRepresentation, number);
+	}
 }
