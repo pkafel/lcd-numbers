@@ -22,7 +22,7 @@ public class LcdNumbersTest {
 	}
 	
 	@Test
-	public void getRepresentationOf1() {
+	public void shouldReturnCorrectRepresentationForSimpleNumbers() {
 
 		for(Entry<LcdNumbers, String> testEntry : testCases.entrySet()){
 			

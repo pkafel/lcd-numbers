@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -21,13 +22,31 @@ public class LcdNumbersGeneratorTest {
 	}
 	
 	@Test
-	public void shouldReturnRepresentationOf1() {
+	public void shouldReturnRepresentationForSimpleNumbers() {
 		
 		for(Entry<String, String> testEntry : testCases.entrySet()){
 			
 			String numberRepresentation = LcdNumberGenerator
 					.generateRepresentationFor(testEntry.getKey());
 			assertEquals(testEntry.getValue(), numberRepresentation);
+		}
+	}
+	
+	@Test
+	public void shouldThrowIllegalArgumentExceptionWhenInputIsNotANumber(){
+		
+		// Given
+		String input = "Some input";
+		
+		try {
+			// When
+			LcdNumberGenerator.generateRepresentationFor(input);
+			
+			// Then
+			Assert.fail();
+		} catch (Exception exception) {
+			
+			Assert.assertTrue(exception instanceof IllegalArgumentException);
 		}
 	}
 }
