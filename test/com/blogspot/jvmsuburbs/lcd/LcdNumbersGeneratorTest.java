@@ -15,7 +15,7 @@ public class LcdNumbersGeneratorTest {
 		String number = LcdNumberGenerator.generateRepresentationFor("1");
 		
 		// Then
-		String expectedRepresentation = "   \n" + "  |'n" + "  |"; 
+		String expectedRepresentation = "   \n" + "  |'n" + "  |\n"; 
 		assertEquals(expectedRepresentation, number);
 	}
 
@@ -28,7 +28,7 @@ public class LcdNumbersGeneratorTest {
 		String number = LcdNumberGenerator.generateRepresentationFor("2");
 		
 		// Then
-		String expectedRepresentation = " _ \n" + " _|\n" + "|_ "; 
+		String expectedRepresentation = " _ \n" + " _|\n" + "|_ \n"; 
 		assertEquals(expectedRepresentation, number);
 	}
 	
@@ -41,7 +41,7 @@ public class LcdNumbersGeneratorTest {
 		String number = LcdNumberGenerator.generateRepresentationFor("8");
 		
 		// Then
-		String expectedRepresentation = " _ \n" + "|_|\n" + "|_|"; 
+		String expectedRepresentation = " _ \n" + "|_|\n" + "|_|\n"; 
 		assertEquals(expectedRepresentation, number);
 	}
 }
