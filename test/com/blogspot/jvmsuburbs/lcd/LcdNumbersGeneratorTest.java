@@ -7,7 +7,7 @@ import org.junit.Test;
 public class LcdNumbersGeneratorTest {
 
 	@Test
-	public void test() {
+	public void shouldReturnRepresentationOf1() {
 		
 		// Given
 		
