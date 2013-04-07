@@ -19,4 +19,16 @@ public class LcdNumbersGeneratorTest {
 		assertEquals(expectedRepresentation, number);
 	}
 
+	@Test
+	public void shouldReturnRepresentationOf2() {
+		
+		// Given
+		
+		// When
+		String number = LcdNumberGenerator.generateRepresentationFor("2");
+		
+		// Then
+		String expectedRepresentation = " _ \n" + " _|\n" + "|_ "; 
+		assertEquals(expectedRepresentation, number);
+	}
 }
