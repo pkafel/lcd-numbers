@@ -2,37 +2,31 @@ package com.blogspot.jvmsuburbs.lcd;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.junit.Before;
 import org.junit.Test;
 
 public class LcdNumbersTest {
 
-	@Test
-	public void getRepresentationOf1() {
-
-		// When
-		String number = LcdNumbers.ONE.getRepresentation();
-
-		// Then
-		assertEquals(LcdNumberExpectedRepresentation.one, number);
-	}
-
-	@Test
-	public void getRepresentationOf2() {
-
-		// When
-		String number = LcdNumbers.TWO.getRepresentation();
-
-		// Then
-		assertEquals(LcdNumberExpectedRepresentation.two, number);
+	private final Map<LcdNumbers, String> testCases = new HashMap<LcdNumbers, String>();
+	
+	@Before
+	public void setUp(){
+		
+		testCases.put(LcdNumbers.ONE, LcdNumberExpectedRepresentation.one);
+		testCases.put(LcdNumbers.TWO, LcdNumberExpectedRepresentation.two);
+		testCases.put(LcdNumbers.EIGHT, LcdNumberExpectedRepresentation.eight);
 	}
 	
 	@Test
-	public void getRepresentationOf8() {
+	public void getRepresentationOf1() {
 
-		// When
-		String number = LcdNumbers.EIGHT.getRepresentation();
-
-		// Then
-		assertEquals(LcdNumberExpectedRepresentation.eight, number);
+		for(Entry<LcdNumbers, String> testEntry : testCases.entrySet()){
+			
+			assertEquals(testEntry.getValue(), testEntry.getKey().getRepresentation());
+		}
 	}
 }

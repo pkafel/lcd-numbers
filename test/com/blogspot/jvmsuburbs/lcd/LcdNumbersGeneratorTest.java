@@ -1,44 +1,33 @@
 package com.blogspot.jvmsuburbs.lcd;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class LcdNumbersGeneratorTest {
 
-	@Test
-	public void shouldReturnRepresentationOf1() {
-		
-		// Given
-		
-		// When
-		String number = LcdNumberGenerator.generateRepresentationFor("1");
-		
-		// Then 
-		assertEquals(LcdNumberExpectedRepresentation.one, number);
-	}
-
-	@Test
-	public void shouldReturnRepresentationOf2() {
-		
-		// Given
-		
-		// When
-		String number = LcdNumberGenerator.generateRepresentationFor("2");
-		
-		// Then 
-		assertEquals(LcdNumberExpectedRepresentation.two, number);
+	private static final Map<String, String> testCases = new HashMap<String, String>();
+	
+	@BeforeClass
+	public static void setUp(){
+		testCases.put("1", LcdNumberExpectedRepresentation.one);
+		testCases.put("2", LcdNumberExpectedRepresentation.two);
+		testCases.put("8", LcdNumberExpectedRepresentation.eight);
 	}
 	
 	@Test
-	public void shouldReturnRepresentationOf8() {
+	public void shouldReturnRepresentationOf1() {
 		
-		// Given
-		
-		// When
-		String number = LcdNumberGenerator.generateRepresentationFor("8");
-		
-		// Then 
-		assertEquals(LcdNumberExpectedRepresentation.eight, number);
+		for(Entry<String, String> testEntry : testCases.entrySet()){
+			
+			String numberRepresentation = LcdNumberGenerator
+					.generateRepresentationFor(testEntry.getKey());
+			assertEquals(testEntry.getValue(), numberRepresentation);
+		}
 	}
 }
