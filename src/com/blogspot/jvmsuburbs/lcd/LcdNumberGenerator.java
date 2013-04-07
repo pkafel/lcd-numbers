@@ -15,6 +15,23 @@ public class LcdNumberGenerator {
 	
 	public static String generateRepresentationFor(String numberToRepresent) {
 
+		if (!isValid(numberToRepresent)){
+
+			throw new IllegalArgumentException("Invalid input String. Expect number.");
+		}
+		
 		return numbersRepresentation.get(numberToRepresent).getRepresentation();
+	}
+
+	private static boolean isValid(String numberToRepresent) {
+
+		try {
+
+			Integer.parseInt(numberToRepresent);
+			return true;
+		} catch (RuntimeException e) {
+
+			return false;
+		}
 	}
 }
