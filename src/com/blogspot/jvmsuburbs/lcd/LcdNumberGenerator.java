@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class LcdNumberGenerator {
 
-	private static final Map<String, LcdNumbers> numbersRepresentation = new HashMap<String, LcdNumbers>();
+	private static final Map<Character, LcdNumbers> numbersRepresentation = new HashMap<Character, LcdNumbers>();
 	
 	static {
-		 numbersRepresentation.put("1", LcdNumbers.ONE);
-		 numbersRepresentation.put("2", LcdNumbers.TWO);
-		 numbersRepresentation.put("8", LcdNumbers.EIGHT);
+		 numbersRepresentation.put('1', LcdNumbers.ONE);
+		 numbersRepresentation.put('2', LcdNumbers.TWO);
+		 numbersRepresentation.put('8', LcdNumbers.EIGHT);
 	}
 	
 	public static String generateRepresentationFor(String numberToRepresent) {
@@ -20,14 +20,16 @@ public class LcdNumberGenerator {
 			throw new IllegalArgumentException("Invalid input String. Expect number.");
 		}
 
-		if(numberToRepresent.equals("128")){
+		LcdNumberTemplate lcdNumber = numbersRepresentation.get(
+				numberToRepresent.charAt(0)).getRepresentation();
+		for(int i = 1; i < numberToRepresent.length(); i++){
 			
-			return "   " + " _ " + " _ \n" +
-					   "  |" + " _|" + "|_|\n" +
-					   "  |" + "|_ " + "|_|\n";
+			char number = numberToRepresent.charAt(i);
+			lcdNumber = lcdNumber.concatenateNumber(numbersRepresentation.get(
+					number).getRepresentation());
 		}
 		
-		return numbersRepresentation.get(numberToRepresent).getRepresentation().toString();
+		return lcdNumber.toString();
 	}
 
 	private static boolean isValid(String numberToRepresent) {
