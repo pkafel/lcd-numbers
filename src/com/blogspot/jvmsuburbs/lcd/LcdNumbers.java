@@ -4,26 +4,25 @@ public enum LcdNumbers {
 
 	ONE {
 		@Override
-		public String getRepresentation() {
+		public LcdNumberTemplate getRepresentation() {
 			return new LcdNumberTemplate.Builder().withoutTopCenterSide()
 					.withoutMiddleLeftSide().withoutMiddleCenterSide()
-					.withoutDownLeftSide().withoutDownCenterSide().build()
-					.toString();
+					.withoutDownLeftSide().withoutDownCenterSide().build();
 		}
 	},
 	TWO {
 		@Override
-		public String getRepresentation() {
+		public LcdNumberTemplate getRepresentation() {
 			return new LcdNumberTemplate.Builder().withoutMiddleLeftSide()
-					.withoutDownRightSide().build().toString();
+					.withoutDownRightSide().build();
 		}
 	},
 	EIGHT {
 		@Override
-		public String getRepresentation() {
-			return new LcdNumberTemplate.Builder().build().toString();
+		public LcdNumberTemplate getRepresentation() {
+			return new LcdNumberTemplate.Builder().build();
 		}
 	};
 
-	public abstract String getRepresentation();
+	public abstract LcdNumberTemplate getRepresentation();
 }

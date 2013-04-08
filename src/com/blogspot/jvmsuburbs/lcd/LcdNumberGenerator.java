@@ -27,7 +27,7 @@ public class LcdNumberGenerator {
 					   "  |" + "|_ " + "|_|\n";
 		}
 		
-		return numbersRepresentation.get(numberToRepresent).getRepresentation();
+		return numbersRepresentation.get(numberToRepresent).getRepresentation().toString();
 	}
 
 	private static boolean isValid(String numberToRepresent) {

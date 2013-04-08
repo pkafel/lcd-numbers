@@ -26,7 +26,7 @@ public class LcdNumbersTest {
 
 		for(Entry<LcdNumbers, String> testEntry : testCases.entrySet()){
 			
-			assertEquals(testEntry.getValue(), testEntry.getKey().getRepresentation());
+			assertEquals(testEntry.getValue(), testEntry.getKey().getRepresentation().toString());
 		}
 	}
 }
