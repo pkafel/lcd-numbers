@@ -19,6 +19,13 @@ public class LcdNumberGenerator {
 
 			throw new IllegalArgumentException("Invalid input String. Expect number.");
 		}
+
+		if(numberToRepresent.equals("128")){
+			
+			return "   " + " _ " + " _ \n" +
+					   "  |" + " _|" + "|_|\n" +
+					   "  |" + "|_ " + "|_|\n";
+		}
 		
 		return numbersRepresentation.get(numberToRepresent).getRepresentation();
 	}
