@@ -22,9 +22,9 @@ public class UtilsTest {
 			Assert.assertEquals(array1[i], resultArray[i]);
 		}
 		
-		for(int i = array1.length; i < array1.length + array2.length; i++){
+		for(int i = 0; i < array2.length; i++){
 			
-			Assert.assertEquals(array2[i], resultArray[i]);
+			Assert.assertEquals(array2[i], resultArray[array1.length + i]);
 		}
 	}
 
