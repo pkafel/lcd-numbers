@@ -5,6 +5,7 @@ public enum LcdDigit {
 	ONE {
 		@Override
 		public LcdTemplate getRepresentation() {
+			
 			return new LcdTemplate.Builder().withoutTopCenterSide()
 					.withoutMiddleLeftSide().withoutMiddleCenterSide()
 					.withoutDownLeftSide().withoutDownCenterSide().build();
@@ -13,6 +14,7 @@ public enum LcdDigit {
 	TWO {
 		@Override
 		public LcdTemplate getRepresentation() {
+			
 			return new LcdTemplate.Builder().withoutMiddleLeftSide()
 					.withoutDownRightSide().build();
 		}
@@ -20,6 +22,7 @@ public enum LcdDigit {
 	EIGHT {
 		@Override
 		public LcdTemplate getRepresentation() {
+			
 			return new LcdTemplate.Builder().build();
 		}
 	};

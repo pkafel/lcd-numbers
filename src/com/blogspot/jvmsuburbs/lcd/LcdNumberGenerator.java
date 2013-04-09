@@ -30,7 +30,7 @@ public class LcdNumberGenerator {
 		for(int i = 1; i < number.length(); i++){
 			
 			LcdTemplate numberLcdTemplate = getLcdTemplateFor(number.charAt(i));
-			lcdNumber = lcdNumber.concatenateNumber(numberLcdTemplate);
+			lcdNumber = lcdNumber.concatenateWithTemplate(numberLcdTemplate);
 		}
 		
 		return lcdNumber.toString(); 

@@ -42,7 +42,7 @@ public class LcdNumberTemplateTest {
 		LcdTemplate t3 = builder.build();
 
 		// When
-		LcdTemplate template = t1.concatenateNumber(t2).concatenateNumber(t3);
+		LcdTemplate template = t1.concatenateWithTemplate(t2).concatenateWithTemplate(t3);
 		
 		// Then
 		String correctRepresentation = "   " + " _ " + " _ \n" +
