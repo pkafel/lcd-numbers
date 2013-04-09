@@ -52,7 +52,7 @@ public class LcdTemplateTest {
 	}
 	
 	@Test
-	public void shouldBuildCorrectTemplateWithSize2(){
+	public void shouldBuildCorrectSimpleTemplateWithSize2(){
 		// Given
 		int size = 2;
 		
@@ -65,6 +65,24 @@ public class LcdTemplateTest {
 								"|__|\n" +
 								"|  |\n" + 
 								"|__|\n";
+		Assert.assertEquals(expectedResult, template.toString());
+	}
+	
+	@Test
+	public void shouldBuildCorrectComplexTemplateWithSize2(){
+		// Given
+		int size = 2;
+		
+		// When
+		LcdTemplate template = new LcdTemplate.Builder(size)
+				.withoutMiddleLeftSide().withoutDownRightSide().build();
+		
+		// Then
+		String expectedResult = " __ \n" + 
+								"   |\n" +
+								" __|\n" +
+								"|   \n" + 
+								"|__ \n";
 		Assert.assertEquals(expectedResult, template.toString());
 	}
 }
