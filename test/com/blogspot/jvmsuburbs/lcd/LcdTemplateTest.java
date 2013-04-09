@@ -24,7 +24,7 @@ public class LcdTemplateTest {
 		LcdTemplate template = new LcdTemplate.Builder()
 				.withoutMiddleLeftSide().withoutMiddleCenterSide()
 				.withoutDownLeftSide().withoutDownCenterSide().build();
-		
+
 		// Then
 		Assert.assertEquals(LcdNumberExpectedRepresentation.seven, template.toString());
 	}

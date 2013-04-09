@@ -127,37 +127,51 @@ public class LcdTemplate {
 		}
 		
 		public Builder withoutTopCenterSide(){
-			template[0][1] = empty;
+			for(int i = 0; i < size; i++){
+				template[0][i+1] = empty;
+			}
 			return this;
 		}
 		
 		public Builder withoutMiddleLeftSide(){
-			template[1][0] = empty;
+			for(int i = 1; i < size + 1; i++){
+				template[i][0] = empty;
+			}
 			return this;
 		}
 		
 		public Builder withoutMiddleCenterSide(){
-			template[1][1] = empty;
+			for(int i = 0; i < size; i++){
+				template[size][i+1] = empty;
+			}
 			return this;
 		}
 		
 		public Builder withoutMiddleRightSide(){
-			template[1][2] = empty;
+			for(int i = 1; i < size + 1; i++){
+				template[i][template[i].length - 1] = empty;
+			}
 			return this;
 		}
 		
 		public Builder withoutDownLeftSide(){
-			template[2][0] = empty;
+			for(int i = 1; i < size + 1; i++){
+				template[size + i][0] = empty;
+			}
 			return this;
 		}
 		
 		public Builder withoutDownCenterSide(){
-			template[2][1] = empty;
+			for(int i = 0; i < size; i++){
+				template[2*size][i+1] = empty;
+			}
 			return this;
 		}
 		
 		public Builder withoutDownRightSide(){
-			template[2][2] = empty;
+			for(int i = 1; i < size + 1; i++){
+				template[size + i][template[i].length - 1] = empty;
+			}
 			return this;
 		}
 		
