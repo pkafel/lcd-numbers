@@ -15,30 +15,35 @@ public class LcdNumberGenerator {
 	
 	public static String getRepresentationFor(String numberToRepresent) {
 
+		return getRepresentationFor(numberToRepresent, 1);
+	}
+	
+	public static String getRepresentationFor(String numberToRepresent, int size) {
+		
 		if (!isValid(numberToRepresent)){
-
+			
 			throw new IllegalArgumentException("Invalid input String. Expect number.");
 		}
 		
-		return getRepresentation(numberToRepresent);
+		return getRepresentation(numberToRepresent, size);		
 	}
 	
-	private static String getRepresentation(String number){
+	private static String getRepresentation(String number, int size){
 		
-		LcdTemplate lcdNumber = getLcdTemplateFor(number.charAt(0));
+		LcdTemplate lcdNumber = getLcdTemplateFor(number.charAt(0), size);
 		
 		for(int i = 1; i < number.length(); i++){
 			
-			LcdTemplate numberLcdTemplate = getLcdTemplateFor(number.charAt(i));
+			LcdTemplate numberLcdTemplate = getLcdTemplateFor(number.charAt(i), size);
 			lcdNumber = lcdNumber.concatenateWithTemplate(numberLcdTemplate);
 		}
 		
 		return lcdNumber.toString(); 
 	}
 	
-	private static LcdTemplate getLcdTemplateFor(char digit){
+	private static LcdTemplate getLcdTemplateFor(char digit, int size){
 		
-		return numbersRepresentation.get(digit).getRepresentation();
+		return numbersRepresentation.get(digit).getRepresentationForSize(size);
 	}
 
 	private static boolean isValid(String numberToRepresent) {

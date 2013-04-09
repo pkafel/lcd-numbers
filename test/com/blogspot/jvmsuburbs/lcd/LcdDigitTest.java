@@ -22,11 +22,11 @@ public class LcdDigitTest {
 	}
 	
 	@Test
-	public void shouldReturnCorrectRepresentationForSimpleNumbers() {
-
+	public void shouldReturnCorrectRepresentationForSimpleNumbersWithSize1() {
+		
 		for(Entry<LcdDigit, String> testEntry : testCases.entrySet()){
 			
-			assertEquals(testEntry.getValue(), testEntry.getKey().getRepresentation().toString());
+			assertEquals(testEntry.getValue(), testEntry.getKey().getRepresentationForSize(1).toString());
 		}
 	}
 }

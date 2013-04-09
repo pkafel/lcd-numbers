@@ -4,28 +4,28 @@ public enum LcdDigit {
 
 	ONE {
 		@Override
-		public LcdTemplate getRepresentation() {
+		public LcdTemplate getRepresentationForSize(int size) {
 			
-			return new LcdTemplate.Builder().withoutTopCenterSide()
+			return new LcdTemplate.Builder(size).withoutTopCenterSide()
 					.withoutMiddleLeftSide().withoutMiddleCenterSide()
 					.withoutDownLeftSide().withoutDownCenterSide().build();
 		}
 	},
 	TWO {
 		@Override
-		public LcdTemplate getRepresentation() {
+		public LcdTemplate getRepresentationForSize(int size) {
 			
-			return new LcdTemplate.Builder().withoutMiddleLeftSide()
+			return new LcdTemplate.Builder(size).withoutMiddleLeftSide()
 					.withoutDownRightSide().build();
 		}
 	},
 	EIGHT {
 		@Override
-		public LcdTemplate getRepresentation() {
+		public LcdTemplate getRepresentationForSize(int size) {
 			
-			return new LcdTemplate.Builder().build();
+			return new LcdTemplate.Builder(size).build();
 		}
 	};
 
-	public abstract LcdTemplate getRepresentation();
+	public abstract LcdTemplate getRepresentationForSize(int size);
 }

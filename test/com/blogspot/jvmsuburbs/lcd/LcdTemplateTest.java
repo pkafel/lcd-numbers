@@ -85,4 +85,27 @@ public class LcdTemplateTest {
 								"|__ \n";
 		Assert.assertEquals(expectedResult, template.toString());
 	}
+	
+	@Test
+	public void shouldAddTwoComplexTemplatesWithSize2(){
+		// Given
+		LcdTemplate.Builder builder = new LcdTemplate.Builder(2);
+		LcdTemplate t1 = builder.withoutTopCenterSide()
+				.withoutTopCenterSide().withoutMiddleLeftSide()
+				.withoutMiddleCenterSide().withoutDownLeftSide()
+				.withoutDownCenterSide().build();
+		LcdTemplate t2 = builder.withoutMiddleLeftSide()
+				.withoutDownRightSide().build();
+		
+		// When
+		LcdTemplate template = t1.concatenateWithTemplate(t2);
+
+		// Then
+		String expectedResult = "    " + " __ \n" + 
+								"   |" + "   |\n" +
+								"   |" + " __|\n" +
+								"   |" + "|   \n" + 
+								"   |" + "|__ \n";
+		Assert.assertEquals(expectedResult, template.toString());
+	}
 }
