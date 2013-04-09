@@ -3,7 +3,7 @@ package com.blogspot.jvmsuburbs.lcd;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LcdNumberTemplateTest {
+public class LcdTemplateTest {
 
 	@Test
 	public void shouldBuildCorrectTemplateWithSize1(){

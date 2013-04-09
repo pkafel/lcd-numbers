@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LcdNumbersTest {
+public class LcdDigitTest {
 
 	private final Map<LcdDigit, String> testCases = new HashMap<LcdDigit, String>();
 	
