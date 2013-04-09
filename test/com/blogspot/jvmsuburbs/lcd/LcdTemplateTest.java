@@ -50,4 +50,21 @@ public class LcdTemplateTest {
 				   					   "  |" + "|_ " + "|_|\n";
 		Assert.assertEquals(correctRepresentation, template.toString());
 	}
+	
+	@Test
+	public void shouldBuildCorrectTemplateWithSize2(){
+		// Given
+		int size = 2;
+		
+		// When
+		LcdTemplate template = new LcdTemplate.Builder(size).build();
+		
+		// Then
+		String expectedResult = " __ \n" + 
+								"|  |\n" +
+								"|__|\n" +
+								"|  |\n" + 
+								"|__|\n";
+		Assert.assertEquals(expectedResult, template.toString());
+	}
 }
