@@ -51,6 +51,24 @@ public class LcdNumbersGeneratorTest {
 	}
 	
 	@Test
+	public void shouldThrowIllegalArgumentExceptionWhenInputIsEmpty(){
+		
+		// Given
+		String input = "";
+		
+		try {
+			// When
+			LcdNumberGenerator.generateRepresentationFor(input);
+			
+			// Then
+			Assert.fail();
+		} catch (Exception exception) {
+			
+			Assert.assertTrue(exception instanceof IllegalArgumentException);
+		}
+	}
+	
+	@Test
 	public void shouldReturnRepresentationForComplexNumbers() {
 		
 		// Given
