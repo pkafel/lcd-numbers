@@ -1,5 +1,7 @@
 package com.blogspot.jvmsuburbs.lcd;
 
+import java.util.Arrays;
+
 public class LcdTemplate {
 
 	private final String[][] representation;
@@ -68,14 +70,56 @@ public class LcdTemplate {
 		
 		public Builder(int size){
 			
-			this.template = getTemplate(); 
+			this.template = getTemplate(size); 
 			this.size = size;
 		}
 		
-		private String[][] getTemplate() {
+		private String[][] getTemplate(int size) {
 
-			return new String[][] { { " ", "_", " " }, { "|", "_", "|" },
-					{ "|", "_", "|" } };
+			String[][] result = new String[2*size + 1][];
+			result[0] = getTopPart(size);
+			
+			for(int i = 0; i < 2; i++) {
+				for(int j = 0; j < size - 1; j ++){
+					
+					result[i*size + j + 1] = getExtensionPart(size);
+				}
+				
+				result[i*size + size] = getHorizontalPart(size);
+			}
+			
+			return result;
+		}
+		
+
+		private String[] getTopPart(int size){
+			
+			String[] top = new String[size + 2];
+			Arrays.fill(top, "_");
+			top[0] = empty;
+			top[top.length - 1] = empty;
+			
+			return top;
+		}
+		
+		private String[] getExtensionPart(int size) {
+			
+			String[] extension = new String[size + 2];
+			Arrays.fill(extension, empty);
+			extension[0] = "|";
+			extension[extension.length - 1] = "|";
+			
+			return extension;
+		}
+		
+		private String[] getHorizontalPart(int size) {
+			
+			String[] extension = new String[size + 2];
+			Arrays.fill(extension, "_");
+			extension[0] = "|";
+			extension[extension.length - 1] = "|";
+			
+			return extension;
 		}
 		
 		public int getSize(){
@@ -119,7 +163,7 @@ public class LcdTemplate {
 		
 		public LcdTemplate build() {
 			LcdTemplate result = new LcdTemplate(template, size);
-			this.template = getTemplate();
+			this.template = getTemplate(size);
 			return result;
 		}
 	}
