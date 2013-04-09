@@ -11,20 +11,20 @@ import org.junit.Test;
 
 public class LcdNumbersTest {
 
-	private final Map<LcdNumbers, String> testCases = new HashMap<LcdNumbers, String>();
+	private final Map<LcdDigit, String> testCases = new HashMap<LcdDigit, String>();
 	
 	@Before
 	public void setUp(){
 		
-		testCases.put(LcdNumbers.ONE, LcdNumberExpectedRepresentation.one);
-		testCases.put(LcdNumbers.TWO, LcdNumberExpectedRepresentation.two);
-		testCases.put(LcdNumbers.EIGHT, LcdNumberExpectedRepresentation.eight);
+		testCases.put(LcdDigit.ONE, LcdNumberExpectedRepresentation.one);
+		testCases.put(LcdDigit.TWO, LcdNumberExpectedRepresentation.two);
+		testCases.put(LcdDigit.EIGHT, LcdNumberExpectedRepresentation.eight);
 	}
 	
 	@Test
 	public void shouldReturnCorrectRepresentationForSimpleNumbers() {
 
-		for(Entry<LcdNumbers, String> testEntry : testCases.entrySet()){
+		for(Entry<LcdDigit, String> testEntry : testCases.entrySet()){
 			
 			assertEquals(testEntry.getValue(), testEntry.getKey().getRepresentation().toString());
 		}

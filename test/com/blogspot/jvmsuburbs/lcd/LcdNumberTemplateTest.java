@@ -10,7 +10,7 @@ public class LcdNumberTemplateTest {
 		// Given
 		
 		// When
-		LcdNumberTemplate template = new LcdNumberTemplate.Builder().build();
+		LcdTemplate template = new LcdTemplate.Builder().build();
 		
 		// Then
 		Assert.assertEquals(LcdNumberExpectedRepresentation.eight, template.toString());
@@ -21,7 +21,7 @@ public class LcdNumberTemplateTest {
 		// Given
 		
 		// When
-		LcdNumberTemplate template = new LcdNumberTemplate.Builder()
+		LcdTemplate template = new LcdTemplate.Builder()
 				.withoutMiddleLeftSide().withoutMiddleCenterSide()
 				.withoutDownLeftSide().withoutDownCenterSide().build();
 		
@@ -32,17 +32,17 @@ public class LcdNumberTemplateTest {
 	@Test
 	public void shouldAddTwoTemplates(){
 		// Given
-		LcdNumberTemplate.Builder builder = new LcdNumberTemplate.Builder();
-		LcdNumberTemplate t1 = builder.withoutTopCenterSide()
+		LcdTemplate.Builder builder = new LcdTemplate.Builder();
+		LcdTemplate t1 = builder.withoutTopCenterSide()
 				.withoutTopCenterSide().withoutMiddleLeftSide()
 				.withoutMiddleCenterSide().withoutDownLeftSide()
 				.withoutDownCenterSide().build();
-		LcdNumberTemplate t2 = builder.withoutMiddleLeftSide()
+		LcdTemplate t2 = builder.withoutMiddleLeftSide()
 				.withoutDownRightSide().build();
-		LcdNumberTemplate t3 = builder.build();
+		LcdTemplate t3 = builder.build();
 
 		// When
-		LcdNumberTemplate template = t1.concatenateNumber(t2).concatenateNumber(t3);
+		LcdTemplate template = t1.concatenateNumber(t2).concatenateNumber(t3);
 		
 		// Then
 		String correctRepresentation = "   " + " _ " + " _ \n" +

@@ -2,19 +2,19 @@ package com.blogspot.jvmsuburbs.lcd;
 
 
 
-public class LcdNumberTemplate {
+public class LcdTemplate {
 
 	private final String[][] representation;
 	
 	private final int size;
 	
-	private LcdNumberTemplate(String[][] representation, int size){
+	private LcdTemplate(String[][] representation, int size){
 		
 		this.representation = representation;
 		this.size = size;
 	}
 	
-	public LcdNumberTemplate concatenateNumber(LcdNumberTemplate template){
+	public LcdTemplate concatenateNumber(LcdTemplate template){
 		
 		if(this.size != template.getSize()){
 			throw new IllegalArgumentException("Two templates must be of the same size !");
@@ -32,7 +32,7 @@ public class LcdNumberTemplate {
 					template.representation[i].length);
 		}
 		
-		return new LcdNumberTemplate(newRepresentation, this.getSize());
+		return new LcdTemplate(newRepresentation, this.getSize());
 	}
 	
 	public int getSize(){
@@ -64,7 +64,6 @@ public class LcdNumberTemplate {
 		private static final String empty = " ";
 		
 		private String[][] template;
-		
 		
 		public Builder(){
 			this(1);
@@ -121,8 +120,8 @@ public class LcdNumberTemplate {
 			return this;
 		}
 		
-		public LcdNumberTemplate build() {
-			LcdNumberTemplate result = new LcdNumberTemplate(template, size);
+		public LcdTemplate build() {
+			LcdTemplate result = new LcdTemplate(template, size);
 			this.template = getTemplate();
 			return result;
 		}

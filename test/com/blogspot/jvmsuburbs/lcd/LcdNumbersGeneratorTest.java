@@ -27,7 +27,7 @@ public class LcdNumbersGeneratorTest {
 		for(Entry<String, String> testEntry : testCases.entrySet()){
 			
 			String numberRepresentation = LcdNumberGenerator
-					.generateRepresentationFor(testEntry.getKey());
+					.getRepresentationFor(testEntry.getKey());
 			assertEquals(testEntry.getValue(), numberRepresentation);
 		}
 	}
@@ -40,7 +40,7 @@ public class LcdNumbersGeneratorTest {
 		
 		try {
 			// When
-			LcdNumberGenerator.generateRepresentationFor(input);
+			LcdNumberGenerator.getRepresentationFor(input);
 			
 			// Then
 			Assert.fail();
@@ -58,7 +58,7 @@ public class LcdNumbersGeneratorTest {
 		
 		try {
 			// When
-			LcdNumberGenerator.generateRepresentationFor(input);
+			LcdNumberGenerator.getRepresentationFor(input);
 			
 			// Then
 			Assert.fail();
@@ -75,7 +75,7 @@ public class LcdNumbersGeneratorTest {
 		String inputNumber = "128";
 		
 		// When
-		String numberRepresentation = LcdNumberGenerator.generateRepresentationFor(inputNumber);
+		String numberRepresentation = LcdNumberGenerator.getRepresentationFor(inputNumber);
 		
 		// Then
 		String correctRepresentation = "   " + " _ " + " _ \n" +

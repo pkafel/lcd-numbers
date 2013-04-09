@@ -5,31 +5,40 @@ import java.util.Map;
 
 public class LcdNumberGenerator {
 
-	private static final Map<Character, LcdNumbers> numbersRepresentation = new HashMap<Character, LcdNumbers>();
+	private static final Map<Character, LcdDigit> numbersRepresentation = new HashMap<Character, LcdDigit>();
 	
 	static {
-		 numbersRepresentation.put('1', LcdNumbers.ONE);
-		 numbersRepresentation.put('2', LcdNumbers.TWO);
-		 numbersRepresentation.put('8', LcdNumbers.EIGHT);
+		 numbersRepresentation.put('1', LcdDigit.ONE);
+		 numbersRepresentation.put('2', LcdDigit.TWO);
+		 numbersRepresentation.put('8', LcdDigit.EIGHT);
 	}
 	
-	public static String generateRepresentationFor(String numberToRepresent) {
+	public static String getRepresentationFor(String numberToRepresent) {
 
 		if (!isValid(numberToRepresent)){
 
 			throw new IllegalArgumentException("Invalid input String. Expect number.");
 		}
-
-		LcdNumberTemplate lcdNumber = numbersRepresentation.get(
-				numberToRepresent.charAt(0)).getRepresentation();
-		for(int i = 1; i < numberToRepresent.length(); i++){
+		
+		return getRepresentation(numberToRepresent);
+	}
+	
+	private static String getRepresentation(String number){
+		
+		LcdTemplate lcdNumber = getLcdTemplateFor(number.charAt(0));
+		
+		for(int i = 1; i < number.length(); i++){
 			
-			char number = numberToRepresent.charAt(i);
-			lcdNumber = lcdNumber.concatenateNumber(numbersRepresentation.get(
-					number).getRepresentation());
+			LcdTemplate numberLcdTemplate = getLcdTemplateFor(number.charAt(i));
+			lcdNumber = lcdNumber.concatenateNumber(numberLcdTemplate);
 		}
 		
-		return lcdNumber.toString();
+		return lcdNumber.toString(); 
+	}
+	
+	private static LcdTemplate getLcdTemplateFor(char digit){
+		
+		return numbersRepresentation.get(digit).getRepresentation();
 	}
 
 	private static boolean isValid(String numberToRepresent) {

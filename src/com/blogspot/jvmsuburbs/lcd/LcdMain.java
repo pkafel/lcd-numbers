@@ -4,6 +4,6 @@ public class LcdMain {
 
 	public static void main(String[] args) {
 		
-		System.out.println(LcdNumberGenerator.generateRepresentationFor("2"));
+		System.out.println(LcdNumberGenerator.getRepresentationFor("2"));
 	}
 }
