@@ -2,7 +2,7 @@ package com.blogspot.jvmsuburbs.lcd;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -12,13 +12,21 @@ import org.junit.Test;
 
 public class LcdNumbersGeneratorTest {
 
-	private static final Map<String, String> testCases = new HashMap<String, String>();
+	private static final Map<String, String> testCases = new LinkedHashMap<String, String>();
 	
 	@BeforeClass
 	public static void setUp(){
+		
+		testCases.put("0", LcdNumberExpectedRepresentation.zero);
 		testCases.put("1", LcdNumberExpectedRepresentation.one);
 		testCases.put("2", LcdNumberExpectedRepresentation.two);
+		testCases.put("3", LcdNumberExpectedRepresentation.three);
+		testCases.put("4", LcdNumberExpectedRepresentation.four);
+		testCases.put("5", LcdNumberExpectedRepresentation.five);
+		testCases.put("6", LcdNumberExpectedRepresentation.six);
+		testCases.put("7", LcdNumberExpectedRepresentation.seven);
 		testCases.put("8", LcdNumberExpectedRepresentation.eight);
+		testCases.put("9", LcdNumberExpectedRepresentation.nine);
 	}
 	
 	@Test

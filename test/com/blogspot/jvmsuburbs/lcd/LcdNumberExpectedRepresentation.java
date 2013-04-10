@@ -14,7 +14,7 @@ public class LcdNumberExpectedRepresentation {
 	
 	public static final String five =  " _ \n" + "|_ \n" + " _|\n";
 	
-	public static final String six =   " _ \n" + " _|\n" + "|_|\n";
+	public static final String six =   " _ \n" + "|_ \n" + "|_|\n";
 	
 	public static final String seven = " _ \n" + "  |\n" + "  |\n";
 	
