@@ -87,7 +87,7 @@ public enum LcdDigit {
 
 	public abstract LcdTemplate getRepresentationForSize(int size);
 	
-	public LcdTemplate getRepresentationForSize() {
+	public LcdTemplate getRepresentation() {
 		
 		return getRepresentationForSize(1);
 	}

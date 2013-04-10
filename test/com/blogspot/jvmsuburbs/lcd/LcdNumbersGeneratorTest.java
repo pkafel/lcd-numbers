@@ -17,16 +17,16 @@ public class LcdNumbersGeneratorTest {
 	@BeforeClass
 	public static void setUp(){
 		
-		testCases.put("0", LcdNumberExpectedRepresentation.zero);
-		testCases.put("1", LcdNumberExpectedRepresentation.one);
-		testCases.put("2", LcdNumberExpectedRepresentation.two);
-		testCases.put("3", LcdNumberExpectedRepresentation.three);
-		testCases.put("4", LcdNumberExpectedRepresentation.four);
-		testCases.put("5", LcdNumberExpectedRepresentation.five);
-		testCases.put("6", LcdNumberExpectedRepresentation.six);
-		testCases.put("7", LcdNumberExpectedRepresentation.seven);
-		testCases.put("8", LcdNumberExpectedRepresentation.eight);
-		testCases.put("9", LcdNumberExpectedRepresentation.nine);
+		testCases.put("0", LcdNumberExpectedRepresentation.WithSize1.zero);
+		testCases.put("1", LcdNumberExpectedRepresentation.WithSize1.one);
+		testCases.put("2", LcdNumberExpectedRepresentation.WithSize1.two);
+		testCases.put("3", LcdNumberExpectedRepresentation.WithSize1.three);
+		testCases.put("4", LcdNumberExpectedRepresentation.WithSize1.four);
+		testCases.put("5", LcdNumberExpectedRepresentation.WithSize1.five);
+		testCases.put("6", LcdNumberExpectedRepresentation.WithSize1.six);
+		testCases.put("7", LcdNumberExpectedRepresentation.WithSize1.seven);
+		testCases.put("8", LcdNumberExpectedRepresentation.WithSize1.eight);
+		testCases.put("9", LcdNumberExpectedRepresentation.WithSize1.nine);
 	}
 	
 	@Test

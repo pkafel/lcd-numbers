@@ -13,7 +13,7 @@ public class LcdTemplateTest {
 		LcdTemplate template = new LcdTemplate.Builder().build();
 		
 		// Then
-		Assert.assertEquals(LcdNumberExpectedRepresentation.eight, template.toString());
+		Assert.assertEquals(LcdNumberExpectedRepresentation.WithSize1.eight, template.toString());
 	}
 	
 	@Test
@@ -26,7 +26,7 @@ public class LcdTemplateTest {
 				.withoutDownLeftSide().withoutDownCenterSide().build();
 
 		// Then
-		Assert.assertEquals(LcdNumberExpectedRepresentation.seven, template.toString());
+		Assert.assertEquals(LcdNumberExpectedRepresentation.WithSize1.seven, template.toString());
 	}
 	
 	@Test
@@ -78,12 +78,8 @@ public class LcdTemplateTest {
 				.withoutMiddleLeftSide().withoutDownRightSide().build();
 		
 		// Then
-		String expectedResult = " __ \n" + 
-								"   |\n" +
-								" __|\n" +
-								"|   \n" + 
-								"|__ \n";
-		Assert.assertEquals(expectedResult, template.toString());
+		Assert.assertEquals(LcdNumberExpectedRepresentation.WithSize2.two,
+				template.toString());
 	}
 	
 	@Test
