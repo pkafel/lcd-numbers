@@ -19,7 +19,7 @@ public class LcdTemplateTest {
 	@Test
 	public void shouldBuildAnotherCorrectTemplateWithSize1(){
 		// Given
-		
+
 		// When
 		LcdTemplate template = new LcdTemplate.Builder()
 				.withoutMiddleLeftSide().withoutMiddleCenterSide()

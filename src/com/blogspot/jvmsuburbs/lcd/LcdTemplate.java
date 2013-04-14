@@ -1,14 +1,19 @@
 package com.blogspot.jvmsuburbs.lcd;
 
-import java.util.Arrays;
+import static com.blogspot.jvmsuburbs.lcd.LcdConsts.*;
+
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
 public class LcdTemplate {
 
-	private final String[][] representation;
+	private final List<String> representation;
 
 	private final int size;
 
-	private LcdTemplate(String[][] representation, int size) {
+	private LcdTemplate(List<String> representation, int size) {
 
 		this.representation = representation;
 		this.size = size;
@@ -25,11 +30,11 @@ public class LcdTemplate {
 
 	private LcdTemplate concatenateTemplate(LcdTemplate template) {
 
-		String[][] newRepresentation = new String[this.representation.length][];
-		for (int i = 0; i < this.representation.length; i++) {
+		List<String> newRepresentation = new ArrayList<String>();
+		for (int i = 0; i < this.representation.size(); i++) {
 
-			newRepresentation[i] = Utils.concatenateArrays(representation[i],
-					template.representation[i]);
+			newRepresentation.add(representation.get(i)
+					+ template.representation.get(i));
 		}
 
 		return new LcdTemplate(newRepresentation, this.getSize());
@@ -44,13 +49,9 @@ public class LcdTemplate {
 	public String toString() {
 
 		StringBuilder builder = new StringBuilder();
-		for (String[] representationLineElements : representation) {
+		for (String representationLineElements : representation) {
 
-			for (String lineElement : representationLineElements) {
-
-				builder.append(lineElement);
-			}
-
+			builder.append(representationLineElements);
 			builder.append("\n");
 		}
 
@@ -58,68 +59,33 @@ public class LcdTemplate {
 	}
 
 	public static class Builder {
+		
+		private enum LcdElement {
+			TOP, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT
+		}
 
 		private final int size;
-
-		private static final String empty = " ";
-
-		private String[][] template;
+		
+		private final Map<LcdElement, Boolean> something = new EnumMap<LcdElement, Boolean>(
+				LcdElement.class);
 
 		public Builder() {
+
 			this(1);
 		}
 
 		public Builder(int size) {
 
-			this.template = getTemplate(size);
 			this.size = size;
+			resetBuildState();
 		}
+		
+		private void resetBuildState(){
+			
+			for(LcdElement element : LcdElement.values()){
 
-		private String[][] getTemplate(int size) {
-
-			String[][] result = new String[2 * size + 1][];
-			result[0] = getTopPart(size);
-
-			for (int i = 0; i < 2; i++) {
-				for (int j = 0; j < size - 1; j++) {
-
-					result[i * size + j + 1] = getExtensionPart(size);
-				}
-
-				result[i * size + size] = getHorizontalPart(size);
+				something.put(element, true);
 			}
-
-			return result;
-		}
-
-		private String[] getTopPart(int size) {
-
-			String[] top = new String[size + 2];
-			Arrays.fill(top, "_");
-			top[0] = empty;
-			top[top.length - 1] = empty;
-
-			return top;
-		}
-
-		private String[] getExtensionPart(int size) {
-
-			String[] extension = new String[size + 2];
-			Arrays.fill(extension, empty);
-			extension[0] = "|";
-			extension[extension.length - 1] = "|";
-
-			return extension;
-		}
-
-		private String[] getHorizontalPart(int size) {
-
-			String[] extension = new String[size + 2];
-			Arrays.fill(extension, "_");
-			extension[0] = "|";
-			extension[extension.length - 1] = "|";
-
-			return extension;
 		}
 
 		public int getSize() {
@@ -129,65 +95,126 @@ public class LcdTemplate {
 
 		public Builder withoutTopCenterSide() {
 
-			for (int i = 0; i < size; i++) {
-				template[0][i + 1] = empty;
-			}
+			something.put(LcdElement.TOP, false);
 			return this;
 		}
 
 		public Builder withoutMiddleLeftSide() {
 
-			for (int i = 1; i < size + 1; i++) {
-				template[i][0] = empty;
-			}
+			something.put(LcdElement.MIDDLE_LEFT, false);
 			return this;
 		}
 
 		public Builder withoutMiddleCenterSide() {
 
-			for (int i = 0; i < size; i++) {
-				template[size][i + 1] = empty;
-			}
+			something.put(LcdElement.MIDDLE_CENTER, false);
 			return this;
 		}
 
 		public Builder withoutMiddleRightSide() {
 
-			for (int i = 1; i < size + 1; i++) {
-				template[i][template[i].length - 1] = empty;
-			}
+			something.put(LcdElement.MIDDLE_RIGHT, false);
 			return this;
 		}
 
 		public Builder withoutDownLeftSide() {
 
-			for (int i = 1; i < size + 1; i++) {
-				template[size + i][0] = empty;
-			}
+			something.put(LcdElement.BOTTOM_LEFT, false);
 			return this;
 		}
 
 		public Builder withoutDownCenterSide() {
 
-			for (int i = 0; i < size; i++) {
-				template[2 * size][i + 1] = empty;
-			}
+			something.put(LcdElement.BOTTOM_CENTER, false);
 			return this;
 		}
 
 		public Builder withoutDownRightSide() {
 
-			for (int i = 1; i < size + 1; i++) {
-				template[size + i][template[i].length - 1] = empty;
-			}
+			something.put(LcdElement.BOTTOM_RIGHT, false);
 			return this;
 		}
 
 		public LcdTemplate build() {
 
-			LcdTemplate result = new LcdTemplate(template, size);
-			this.template = getTemplate(size);
+			LcdTemplate result = new LcdTemplate(getRepresentation(), size);
+			resetBuildState();
 			return result;
+		}
+		
+		private List<String> getRepresentation() {
+
+			List<String> result = new ArrayList<String>();
+			
+			result.add(getTop());
+			for(int i = 0; i < size - 1; i++){
+				
+				result.add(getVerticalMiddle());
+			}
+			
+			result.add(getHorizontalMiddle());
+			
+			for(int i = 0; i < size - 1; i++){
+				
+				result.add(getVerticalBottom());
+			}
+			result.add(getHorizontalBottom());
+			
+			return result;
+		}
+
+		private String getTop() {
+
+			char centerFiller = something.get(LcdElement.TOP) ? horizontal : empty;
+
+			return buildRow(empty, centerFiller, empty);
+		}
+
+		private String getHorizontalMiddle() {
+
+			char leftFiller = something.get(LcdElement.MIDDLE_LEFT) ? vertical : empty;
+			char rightFiller = something.get(LcdElement.MIDDLE_RIGHT) ? vertical : empty;
+			char centerFiller = something.get(LcdElement.MIDDLE_CENTER) ? horizontal : empty;
+			
+			return buildRow(leftFiller, centerFiller, rightFiller);
+		}
+		
+		private String getHorizontalBottom() {
+
+			char leftFiller = something.get(LcdElement.BOTTOM_LEFT) ? vertical : empty;
+			char rightFiller = something.get(LcdElement.BOTTOM_RIGHT) ? vertical : empty;
+			char centerFiller = something.get(LcdElement.BOTTOM_CENTER) ? horizontal : empty;
+
+			return buildRow(leftFiller, centerFiller, rightFiller);
+		}
+
+		private String getVerticalMiddle() {
+
+			char leftFiller = something.get(LcdElement.MIDDLE_LEFT) ? vertical : empty;
+			char rightFiller = something.get(LcdElement.MIDDLE_RIGHT) ? vertical : empty;
+
+			return buildRow(leftFiller, empty, rightFiller);
+		}
+		
+		private String getVerticalBottom() {
+
+			char leftFiller = something.get(LcdElement.BOTTOM_LEFT) ? vertical : empty;
+			char rightFiller = something.get(LcdElement.BOTTOM_RIGHT) ? vertical : empty;
+
+			return buildRow(leftFiller, empty, rightFiller);
+		}
+		
+		private String buildRow(char left, char centerFiller, char right){
+			
+			StringBuilder builder = new StringBuilder();
+			
+			builder.append(left);
+			for (int i = 0; i < size; i++) {
+				builder.append(centerFiller);
+			}
+			builder.append(right);
+			
+			return builder.toString();
 		}
 	}
 }
